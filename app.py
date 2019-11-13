@@ -357,8 +357,8 @@ It is useful to compare different weigths among the 3 principal assets (except c
 Having said that, let's proceed to some considerations:
 * Gold is an insurance asset: the expected return is near zero, but you can try by yourself that a portfolio without a certain per cent
 of gold (i guess at least 10-15%) is not pareto efficient.
-* If you increase stocks weigth the average CAGR increases (and also the average Omega ratio at 8%), but also its volatility CAGR, VaR and CVaR increase.
-* Above a certain stock weigth threshold (i estimate about 50%), the risk increases more than the increase of the expected return: geometric sharpe ratio begins to drop.
+* If you increase stocks weight the average CAGR increases (and also the average Omega ratio at 8%), but also its volatility CAGR, VaR and CVaR increase.
+* Above a certain stock weight threshold (i estimate about 50%), the risk increases more than the increase of the expected return: geometric sharpe ratio begins to drop.
 Moreover max drawdown metrics begin to increase (in absolute value) in a clear manner.
 * If you increase stock weight beyond a certain threshold (i estimate 90%), the portfolio is not anymore pareto efficient (i.e. you can build another
 portfolio with the same average CAGR but less risky).
