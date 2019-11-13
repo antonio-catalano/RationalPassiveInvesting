@@ -22,15 +22,15 @@ The model takes into account costs (except taxes) and severe scenarios.
 You can find more informations in the sections *The explanation of the model* and
 *Hypothesis and results*.
 
-<!--
+
 Demo
 ----
 
+
+![RationalPassiveInvesting Demo](demo/samplePassiveInvestingApp.gif)
+
  
 
-![StockAnalysisApp Demo](demo/sample.gif) -->
-
- 
 
 **Requirements**
 

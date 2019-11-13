@@ -310,13 +310,13 @@ if modelrational:
 for S&P 500  and T-bonds historical total returns.
 * https://www.macrotrends.net/ for gold historical returns.
 
-We have a matrix of 69 rows (from 1950 to 2018) and 3 columns (S&P 500 index total return, T-bonds total return,
+We have a matrix of 69 rows (from 1950 to 2018 included) and 3 columns (S&P 500 index total return, T-bonds total return,
 gold return) containing the total annual returns of the assets.
 Each row represents a potential extraction in the bootstrap procedure.
 
-In order to take into account the dependence structure of asset returns i've used a special moving block length bootstrap procedure, named *stationary block bootstrap*.
-This procedure is an overlapping moving block length bootstrap where the length of each block is not fixed, but it follows a geometric distribution with $p = 1/m$ , where $m$
-is the average block length (i choosed $m = 3$).
+In order to take into account the dependence structure of asset returns I've used a special moving block length bootstrap procedure, named *stationary block bootstrap*.
+This procedure consists of an overlapping moving block length bootstrap where the length of each block is not fixed, instead it follows a geometric distribution with $p = 1/m$ , where $m$
+is the average block length (I chose $m = 3$).
 
 The method runs 100 simulations for each *holding period* path.
 
@@ -325,16 +325,16 @@ I estimated these costs by deducting a 0.6% yearly.
 It's higher then the current average Total Expense Ratio (TER) of about 0.4% , but in this way
 we take into account also trading costs (very low given the hold and buy strategy).
 
-In order to stress the strategy i used an historical stress test approach.
-If you choose **Yes** in the corresponding box the model first generates
-the bootstrap sample, then, for each year (so for each 3-multivariate returns), with a probability of 5%, replaces
+In order to stress the strategy I used an historical stress test approach.
+If you choose **Yes** in the corresponding box, the model first generates
+the bootstrap sample, then, for each year (so for each 3-multivariate returns), it replaces with a probability of 5%
 that year-returns of the bootstrap sample with the year-returns where the historical returns of the 3 assets give
 the worst overall return for that strategy allocation:
 in other words, for each set of weights that you choose, the algorithm finds the year of
 the original historical dataset (that has 69 rows)
 where your portfolio had the biggest loss, it stores that year, and then for each year of
 the new bootstrap dataset (that has only _holding period_ rows) it applies a uniform
-distribution (0,1) generator to decide if to procede to the substitution (if the random number generated
+distribution (0,1) generator to decide whether or not to proceed to the substitution (proceed if the generated random number
 < 0.05).
 
 If you choose the *severe* test the algorithm applies the same rule described above but it multiplies the
@@ -344,24 +344,24 @@ returns of the worst year with a coefficient of 1.5, not 1.
 
 if considerations:
     '''# Hypothesis and results'''
-    st.markdown('''Before to dive into considerations let's clarify which are the hypothesis.
-Too often the hypothesis of a model are overlooked, but if hypothesis aren't realistic, results too won't be realistic.
+    st.markdown('''Before we reach conclusions let's clarify which are the hypothesis.
+Too often the hypothesis of a model are overlooked, but if hypothesis aren't realistic, results won't be realistic neither.
 ### Hypothesis of the model:
 1. Buy & hold strategy for the whole holding period
-2. The empirical future annual returns distribution of the 3 assets won't be dramatically different compared to the past 69 years.
-That it means that in the future the stock market can loose even 50% one year, but the model doesn't take into account the fact
+2. The empirical future annual returns distribution of the 3 assets won't be dramatically different compared to that of the past 69 years.
+This means that in the future the stock market can loose even 50% one year, but the model doesn't take into account the fact
 that the stock market can loose 100% or that both stocks and bonds loose 30% in one year.
-3. Historical stock and bonds data concern only the US market. Hence the bootstrap portfolio of our model is only a benchmark portfolio.
-It is useful to compare different weigths among the 3 principal assets (except cash) but it doesn't represent a fully diversified portfolio.
+3. Historical stock and bonds data only concern the US market. Hence the bootstrap portfolio of our model is only a benchmark portfolio.
+It is useful to compare different weights among the 3 principal assets (except cash) but it doesn't represent a fully diversified portfolio.
 
 Having said that, let's proceed to some considerations:
 * Gold is an insurance asset: the expected return is near zero, but you can try by yourself that a portfolio without a certain per cent
-of gold (i guess at least 10-15%) is not pareto efficient.
-* If you increase stocks weight the average CAGR increases (and also the average Omega ratio at 8%), but also its volatility CAGR, VaR and CVaR increase.
-* Above a certain stock weight threshold (i estimate about 50%), the risk increases more than the increase of the expected return: geometric sharpe ratio begins to drop.
+of gold (I guess at least 8-10%) is not pareto efficient.
+* If you increase stocks weight the average CAGR increases (and also the average Omega ratio at 8%), but also volatility CAGR, VaR and CVaR increase.
+* Above a certain stock weight threshold (I estimate about 50%), the risk increases more than the increase of the expected return: geometric sharpe ratio begins to drop.
 Moreover max drawdown metrics begin to increase (in absolute value) in a clear manner.
-* If you increase stock weight beyond a certain threshold (i estimate 90%), the portfolio is not anymore pareto efficient (i.e. you can build another
-portfolio with the same average CAGR but less risky).
+* If you increase stock weight beyond a certain threshold (I estimate 85-90%), the portfolio is not anymore pareto efficient (i.e. you can build another
+portfolio with the same expected CAGR but less risky).
 * Based on my simulations, robust portfolios are weigth sets like these: (35% - 50% - 15%), (40% - 40%- 20%), (45% - 30% - 25%).
- Aggressive and pareto efficient portfolios are sets like these: (70% - 15% - 15%), (60% - 15% - 25%).
+ Aggressive and pareto efficient portfolios are sets like these: (70% - 15% - 15%), (60% - 30% - 10%).
   ''')
