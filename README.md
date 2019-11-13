@@ -51,9 +51,7 @@ git clone https://github.com/antonio-catalano/PassivePortfolioStrategy.git
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-
 cd into the project folder
-
 
 'path'\>cd PassivePortfolioStrategy
 
@@ -62,3 +60,7 @@ cd into the project folder
 streamlit run app.py
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Run online**
+
+<https://rational-passive-investing.herokuapp.com/>
