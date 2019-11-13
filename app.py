@@ -221,9 +221,9 @@ class portfolio_stationaryBootstrap:
 
         return total_stats
 
-def joint_sim(w1,w2,w3, w11, w22, w33, hp, stress_freq, stress_int):
-    s1 = portfolio_stationaryBootstrap(overall, w1/100, w2/100, w3/100, holding_period = hp, stress_test_frequency = stress_freq, stress_test_intensity = stress_int)
-    s2 = portfolio_stationaryBootstrap(overall, w11/100, w22/100, w33/100, holding_period = hp, stress_test_frequency = stress_freq, stress_test_intensity = stress_int)
+def joint_sim(w1,w2,w3, w11, w22, w33, capital, hp, stress_freq, stress_int):
+    s1 = portfolio_stationaryBootstrap(overall, w1/100, w2/100, w3/100, capital, holding_period = hp, stress_test_frequency = stress_freq, stress_test_intensity = stress_int)
+    s2 = portfolio_stationaryBootstrap(overall, w11/100, w22/100, w33/100, capital, holding_period = hp, stress_test_frequency = stress_freq, stress_test_intensity = stress_int)
     def s():
         gen = np.random.choice(1_000_000)
         np.random.seed(gen)
@@ -236,7 +236,7 @@ def joint_sim(w1,w2,w3, w11, w22, w33, hp, stress_freq, stress_int):
 '''  # How much is the benefit of diversification for a passive portfolio?
 ## We try to quantify it through historical data from 1950 by implementing a stationary bootstrap method.
 
-You are going to select 2 portfolios (initial capital $20,000$$ each) with different weights and the algorithm
+You are going to select 2 portfolios with different weights and the algorithm
 locks the same random state generator of stochastic path for both sets of weights.
 In this way you can evaluate two sets of weights _ceteris paribus_.
 Each time you select the two different sets of weights the algorith will refresh the random state generator,
@@ -266,6 +266,9 @@ if modelrational or considerations:
     sim = False
 
 if sim:
+    capital = st.selectbox('Select the initial capital of both portfolios ', np.array(['20,000$','100,000$','500,000$']))
+    capital = int(capital.replace(',','').replace('$',''))
+
     hp = st.slider('Select the Holding Period', min_value = 5, max_value = 50, value = 10)
 
     st.markdown('''### Portfolio 1''')
@@ -293,7 +296,7 @@ if sim:
         else:
             stressCoef = 1
 
-        sim1, sim2 = joint_sim(w1, w2, w3, w11, w22, w33, hp, stressTest, stressCoef)
+        sim1, sim2 = joint_sim(w1, w2, w3, w11, w22, w33, capital, hp, stressTest, stressCoef)
 
         '''### Portfolio 1'''
         st.dataframe(sim1)
