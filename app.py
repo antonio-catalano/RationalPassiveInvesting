@@ -269,7 +269,7 @@ if sim:
     capital = st.selectbox('Select the initial capital of both portfolios ', np.array(['20,000$','100,000$','500,000$']))
     capital = int(capital.replace(',','').replace('$',''))
 
-    hp = st.slider('Select the Holding Period', min_value = 5, max_value = 50, value = 10)
+    hp = st.slider('Select the Holding Period (years)', min_value = 5, max_value = 50, value = 10)
 
     st.markdown('''### Portfolio 1''')
 
