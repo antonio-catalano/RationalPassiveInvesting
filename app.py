@@ -355,7 +355,9 @@ that the stock market can loose 100% or that both stocks and bonds loose 30% in 
 It is useful to compare different weights among the 3 principal assets (except cash) but it doesn't represent a fully diversified portfolio.
 
 Having said that, let's proceed to some considerations:
-* Gold is an insurance asset: the expected return is near zero, but you can try by yourself that a portfolio without a certain per cent
+* Gold is an insurance asset: its average CAGR is only slightly positive and with high volatility (so with a geometric sharpe ratio almost null: that means
+that it is NOT an insurance asset if held individually).
+But you can try by yourself that a portfolio without a certain per cent
 of gold (I guess at least 8-10%) is not pareto efficient.
 * If you increase stocks weight the average CAGR increases (and also the average Omega ratio at 8%), but also volatility CAGR, VaR and CVaR increase.
 * Above a certain stock weight threshold (I estimate about 50%), the risk increases more than the increase of the expected return: geometric sharpe ratio begins to drop.
