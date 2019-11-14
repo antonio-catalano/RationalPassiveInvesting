@@ -355,7 +355,7 @@ that the stock market can loose 100% or that both stocks and bonds loose 30% in 
 It is useful to compare different weights among the 3 principal assets (except cash) but it doesn't represent a fully diversified portfolio.
 
 Having said that, let's proceed to some considerations:
-* Gold is an insurance asset: its average CAGR is only slightly positive and with high volatility (so with a geometric sharpe ratio almost null: that means
+* Gold is an insurance asset: its average CAGR is only slightly positive with high annual return volatility (so with a geometric sharpe ratio almost null: that means
 that it is NOT an insurance asset if held individually).
 But you can try by yourself that a portfolio without a certain per cent
 of gold (I guess at least 8-10%) is not pareto efficient.
